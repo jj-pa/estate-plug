@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import brand from 'enl-api/dummy/brand';
+import chartData from 'enl-api/dummy/chartData';
 import { Helmet } from 'react-helmet';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -8,7 +9,8 @@ import Divider from '@material-ui/core/Divider';
 import {
   CounterIconsWidget,
   PerformanceChartWidget,
-  TaskWidget
+  TaskWidget,
+  BarChart
 } from 'enl-components';
 import styles from './dashboard-jss';
 
@@ -18,6 +20,7 @@ class AnalyticDashboard extends PureComponent {
     const title = brand.name + ' - Personal Dashboard';
     const description = brand.desc;
     const { classes } = this.props;
+    const data = chartData;
     return (
       <div>
         <Helmet>
@@ -46,6 +49,13 @@ class AnalyticDashboard extends PureComponent {
           <Grid item md={12} xs={12}>
             <Divider className={classes.divider} />
             <TaskWidget />
+          </Grid>
+        </Grid>
+        {/* 4rd Section */}
+        <Grid container spacing={3} className={classes.root}>
+          <Grid item md={12} xs={12}>
+            <Divider className={classes.divider} />
+            <BarChart data={data} width={1000} height={550} />
           </Grid>
         </Grid>
       </div>

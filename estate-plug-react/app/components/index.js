@@ -103,3 +103,6 @@ export SideReview from './Forms/SideReview';
 export ErrorWrap from './Error/ErrorWrap';
 // Theme an Layout Settings
 export TemplateSettings from './TemplateSettings';
+
+// D3.js Chart
+export BarChart from './BarChart'
