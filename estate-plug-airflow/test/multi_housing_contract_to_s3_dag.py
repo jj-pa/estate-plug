@@ -45,7 +45,6 @@ def get_contract_frame(service_key, lawd_cd, deal_ymd):
         item['보증금액'] = int(item['보증금액'].replace(',', ''))
         item['월세금액'] = int(item['월세금액'].replace(',', ''))
         item['전용면적'] = float(item['전용면적'])
-        item['층'] = int(item['층'])
         item['건축년도'] = int(item['건축년도'])
 
         contract_row = pd.Series(item)
@@ -122,4 +121,4 @@ def task_multi_housing_contract_data(input_year, input_month, **kwargs):
     # kafka_producer.produce(contract_df_by_api.to_json(orient='index'))
     # response에 담겨있는 Buckets의 이름만 가져와 buckets 변수에 배열로 저장.
 
-task_multi_housing_contract_data('2020','1')
+task_multi_housing_contract_data('2015','5')

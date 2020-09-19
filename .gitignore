@@ -730,3 +730,6 @@ gradle-app.setting
 
 # Docker mongo
 **/mongo-data/db/journal/*
+
+# Airflow export files
+estate-plug-airflow/export/*
