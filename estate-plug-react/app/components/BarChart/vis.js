@@ -5,11 +5,19 @@ const draw = (props) => {
     d3.select('.vis-barchart > *').remove();
     const data = props.data;
     const margin = {top: 20, right: 20, bottom: 30, left: 40};
-    const width = props.width - margin.left - margin.right;
+
+    // const width = props.width - margin.left - margin.right;
+    const element = d3.select('.vis-barchart').node();
+    console.log(element.getBoundingClientRect().width);
+    const width = element.getBoundingClientRect().width + margin.left + margin.right;
+
     const height = props.height - margin.top - margin.bottom;
     let svg = d3.select('.vis-barchart').append('svg')
-            .attr('width',width + margin.left + margin.right)
-            .attr('height',height + margin.top + margin.bottom)
+            // .attr('width',width + margin.left + margin.right)
+            .attr('width', '100%')
+            .attr('height', height + margin.top + margin.bottom)
+            .attr('viewBox','0 0 ' + (width + margin.left + margin.right) + ' ' + (height + margin.top + margin.bottom))
+            .attr('preserveAspectRatio','xMinYMin')
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 

@@ -55,7 +55,7 @@ class AnalyticDashboard extends PureComponent {
         <Grid container spacing={3} className={classes.root}>
           <Grid item md={12} xs={12}>
             <Divider className={classes.divider} />
-            <BarChart data={data} width={1000} height={550} />
+            <BarChart data={data} height={550} />
           </Grid>
         </Grid>
       </div>
