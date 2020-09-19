@@ -15,7 +15,7 @@ const draw = (props) => {
     let svg = d3.select('.vis-barchart').append('svg')
             // .attr('width',width + margin.left + margin.right)
             .attr('width', '100%')
-            .attr('height', height + margin.top + margin.bottom)
+            .attr('height', '100%')
             .attr('viewBox','0 0 ' + (width + margin.left + margin.right) + ' ' + (height + margin.top + margin.bottom))
             .attr('preserveAspectRatio','xMinYMin')
             .append("g")
