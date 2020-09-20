@@ -18,14 +18,15 @@ class BarChart extends Component {
 
     render() {
         const { classes, intl } = this.props;
+        const { title, desc } = this.props;
         return (
             <PapperBlock
-                title={intl.formatMessage(messages.barchart_title)}
+                title={title}
                 icon="playlist_add_check"
                 noMargin
                 whiteBg
                 colorMode="dark"
-                desc={intl.formatMessage(messages.barchart_desc)}
+                desc={desc}
                 className={classes.root}
             >
                 <div className='vis-barchart'/>

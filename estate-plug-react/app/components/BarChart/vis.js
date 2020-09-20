@@ -23,7 +23,7 @@ const draw = (props) => {
 
     // format the data
     data.forEach(function(d) {
-        d.age = +d.age;
+        d.price = +d.price;
     });
 
     // Scale the range of the data in the domains
@@ -32,18 +32,18 @@ const draw = (props) => {
           .padding(0.1);
     let y = d3.scaleLinear()
           .range([height, 0]);
-    x.domain(data.map(function(d) { return d.name; }));
-    y.domain([0, d3.max(data, function(d) { return d.age; })]);
+    x.domain(data.map(function(d) { return d.year_month; }));
+    y.domain([0, d3.max(data, function(d) { return d.price; })]);
 
     // append the rectangles for the bar chart
     svg.selectAll(".bar")
         .data(data)
         .enter().append("rect")
         .attr("class", "bar")
-        .attr("x", function(d) { return x(d.name); })
+        .attr("x", function(d) { return x(d.year_month); })
         .attr("width", x.bandwidth())
-        .attr("y", function(d) { return y(d.age); })
-        .attr("height", function(d) { return height - y(d.age); });
+        .attr("y", function(d) { return y(d.price); })
+        .attr("height", function(d) { return height - y(d.price); });
 
     // add the x Axis
     svg.append("g")

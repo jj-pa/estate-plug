@@ -13,14 +13,36 @@ import {
   BarChart
 } from 'enl-components';
 import styles from './dashboard-jss';
+import axios from 'axios';
 
 
 class AnalyticDashboard extends PureComponent {
+  state = {
+    data: [],
+  };
+
+  monthlyPriceData = async () => {
+    try {
+      const response = await axios.get('http://localhost:4500/api/apart_trade_monthly_price');
+      this.setState({ // boards: 'test'
+        data: response.data,
+      });
+    } catch (e) {
+      console.log(e);
+    } 
+  };
+
+  //마운트 될때 실행
+  componentDidMount() {
+    const { monthlyPriceData } = this;
+    monthlyPriceData();
+  }
+
   render() {
     const title = brand.name + ' - Personal Dashboard';
     const description = brand.desc;
     const { classes } = this.props;
-    const data = chartData;
+    const { data } = this.state;
     return (
       <div>
         <Helmet>
@@ -31,31 +53,31 @@ class AnalyticDashboard extends PureComponent {
           <meta property="twitter:title" content={title} />
           <meta property="twitter:description" content={description} />
         </Helmet>
-        {/* 1st Section */}
+        {/* 1rd Section */}
+        <Grid container spacing={3} className={classes.root}>
+          <Grid item md={12} xs={12}>
+            <Divider className={classes.divider} />
+            <BarChart data={data} height={550} title="아파트 매매" desc="2015년 월별 아파트 매매 금액" />
+          </Grid>
+        </Grid>
+        {/* 2st Section */}
         <Grid container spacing={3} className={classes.root}>
           <Grid item xs={12}>
             <CounterIconsWidget />
           </Grid>
         </Grid>
         <Divider className={classes.divider} />
-        {/* 2nd Section */}
+        {/* 3nd Section */}
         <Grid container spacing={3} className={classes.root}>
           <Grid item xs={12}>
             <PerformanceChartWidget />
-          </Grid>
-        </Grid>
-        {/* 3rd Section */}
-        <Grid container spacing={3} className={classes.root}>
-          <Grid item md={12} xs={12}>
-            <Divider className={classes.divider} />
-            <TaskWidget />
           </Grid>
         </Grid>
         {/* 4rd Section */}
         <Grid container spacing={3} className={classes.root}>
           <Grid item md={12} xs={12}>
             <Divider className={classes.divider} />
-            <BarChart data={data} height={550} />
+            <TaskWidget />
           </Grid>
         </Grid>
       </div>
