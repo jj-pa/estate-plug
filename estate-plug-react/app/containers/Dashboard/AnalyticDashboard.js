@@ -11,7 +11,8 @@ import {
   PerformanceChartWidget,
   TaskWidget,
   VerticalBarChart,
-  HorizontalBarChart
+  HorizontalBarChart,
+  PieChart
 } from 'enl-components';
 import styles from './dashboard-jss';
 import axios from 'axios';
@@ -87,6 +88,9 @@ class AnalyticDashboard extends PureComponent {
           </Grid>
           <Grid item xl={4} lg={6} md={12} xs={12}>
             <HorizontalBarChart name="barChart6" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          </Grid>
+          <Grid item xl={4} lg={6} md={12} xs={12}>
+            <PieChart name="pieChart1" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
           </Grid>
         </Grid>
         <Divider className={classes.divider} />

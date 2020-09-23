@@ -10,7 +10,7 @@ const draw = (props) => {
 
         // const width = props.width - margin.left - margin.right;
         const element = d3.select('.' + name).node();
-        console.log(element.getBoundingClientRect().width);
+        // console.log(element.getBoundingClientRect().width);
         
         const width = element.getBoundingClientRect().width + margin.left + margin.right;
         

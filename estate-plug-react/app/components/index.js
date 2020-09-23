@@ -107,3 +107,4 @@ export TemplateSettings from './TemplateSettings';
 // D3.js Chart
 export VerticalBarChart from './BarChart/VerticalBarChart'
 export HorizontalBarChart from './BarChart/HorizontalBarChart'
+export PieChart from './PieChart/PieChart'
