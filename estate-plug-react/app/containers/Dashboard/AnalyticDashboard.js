@@ -71,26 +71,26 @@ class AnalyticDashboard extends PureComponent {
 
         <Divider className={classes.divider} />
         <Grid container spacing={3} className={classes.root}>
-          <Grid item xl={4} lg={6} md={12} xs={12}>
-            <VerticalBarChart name="barChart1" data={data} height={500} title="아파트 매매" desc="2015년 월별 아파트 매매 금액" />
+          <Grid item xl={3} lg={6} md={12} xs={12}>
+            <VerticalBarChart name="barChart1" data={data} height={400} title="아파트 매매" desc="2015년 월별 아파트 매매 금액" />
           </Grid>
-          <Grid item xl={4} lg={6} md={12} xs={12}>
-            <VerticalBarChart name="barChart2" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          <Grid item xl={3} lg={6} md={12} xs={12}>
+            <VerticalBarChart name="barChart2" data={data} height={400} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
           </Grid>
-          <Grid item xl={4} lg={6} md={12} xs={12}>
-            <VerticalBarChart name="barChart3" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          <Grid item xl={3} lg={6} md={12} xs={12}>
+            <VerticalBarChart name="barChart3" data={data} height={400} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
           </Grid>
-          <Grid item xl={4} lg={6} md={12} xs={12}>
-            <HorizontalBarChart name="barChart4" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          <Grid item xl={3} lg={6} md={12} xs={12}>
+            <HorizontalBarChart name="barChart4" data={data} height={400} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
           </Grid>
-          <Grid item xl={4} lg={6} md={12} xs={12}>
-            <HorizontalBarChart name="barChart5" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          <Grid item xl={3} lg={6} md={12} xs={12}>
+            <HorizontalBarChart name="barChart5" data={data} height={400} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
           </Grid>
-          <Grid item xl={4} lg={6} md={12} xs={12}>
-            <HorizontalBarChart name="barChart6" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          <Grid item xl={3} lg={6} md={12} xs={12}>
+            <HorizontalBarChart name="barChart6" data={data} height={400} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
           </Grid>
-          <Grid item xl={4} lg={6} md={12} xs={12}>
-            <PieChart name="pieChart1" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          <Grid item xl={3} lg={6} md={12} xs={12}>
+            <PieChart name="pieChart1" data={data} height={400} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
           </Grid>
         </Grid>
         <Divider className={classes.divider} />

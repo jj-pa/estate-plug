@@ -35,7 +35,7 @@ const draw = (props) => {
 
         // chart dimensions
         const element = d3.select('.' + name).node();
-        const margin = {top: 20, right: 20, bottom: 30, left: 40};
+        const margin = {top: 0, right: 20, bottom: 0, left: 40};
         let width = element.getBoundingClientRect().width + margin.left + margin.right;
         let height = props.height - margin.top - margin.bottom;;
 
@@ -43,7 +43,7 @@ const draw = (props) => {
         let radius = Math.min(width, height) / 2;
 
         // legend dimensions
-        let legendRectSize = 12; // defines the size of the colored squares in legend
+        let legendRectSize = 9; // defines the size of the colored squares in legend
         let legendSpacing = 9; // defines spacing between squares
 
         // define color scale
@@ -67,14 +67,14 @@ const draw = (props) => {
         let svg = d3.select('.' + name) // select element in the DOM with id 'chart'
             .append('svg') // append an svg element to the element we've selected
             .attr('class', name)
-            .attr('width', width - 100) // set the width of the svg element we just added
-            .attr('height', height) // set the height of the svg element we just added
+            .attr('width', '100%') // set the width of the svg element we just added
+            .attr('height', '100%') // set the height of the svg element we just added
             .attr('viewBox','0 0 ' + (width + margin.left + margin.right) + ' ' + (height + margin.top + margin.bottom))
             // .attr('preserveAspectRatio','xMinYMin')
             .append('g') // append 'g' element to the svg element
-            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+            // .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
             // .attr('transform', 'translate(' + width * 1 / 4 + ',' + height * 2 / 5 + ')');
-            // .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')'); // our reference is now to the 'g' element. centerting the 'g' element to the svg element
+            .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')'); // our reference is now to the 'g' element. centerting the 'g' element to the svg element
 
         let arc = d3.arc()
             .innerRadius(0) // none for pie chart
@@ -164,7 +164,7 @@ const draw = (props) => {
             .attr('transform', function(d, i) {                   
                 let height = legendRectSize + legendSpacing; // height of element is the height of the colored square plus the spacing      
                 let offset =  height * color.domain().length / 2; // vertical offset of the entire legend = height of a single element & half the total number of elements  
-                let horz = 23 * legendRectSize; // the legend is shifted to the left to make room for the text
+                let horz = 26 * legendRectSize; // the legend is shifted to the left to make room for the text
                 let vert = i * height - offset; // the top of the element is hifted up or down from the center using the offset defiend earlier and the index of the current element 'i'               
                 return 'translate(' + horz + ',' + vert + ')'; //return translation       
             });
