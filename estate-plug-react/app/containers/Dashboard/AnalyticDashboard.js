@@ -19,13 +19,25 @@ import axios from 'axios';
 class AnalyticDashboard extends PureComponent {
   state = {
     data: [],
+    data2: []
   };
 
   monthlyPriceData = async () => {
     try {
       const response = await axios.get('http://localhost:4500/api/apart_trade_monthly_price');
       this.setState({ // boards: 'test'
-        data: response.data,
+        data: response.data
+      });
+    } catch (e) {
+      console.log(e);
+    } 
+  };
+
+  monthlyPriceData2 = async () => {
+    try {
+      const response = await axios.get('http://localhost:4500/api/apart_trade_monthly_price');
+      this.setState({ // boards: 'test'
+        data2: response.data
       });
     } catch (e) {
       console.log(e);
@@ -34,15 +46,16 @@ class AnalyticDashboard extends PureComponent {
 
   //마운트 될때 실행
   componentDidMount() {
-    const { monthlyPriceData } = this;
+    const { monthlyPriceData, monthlyPriceData2 } = this;
     monthlyPriceData();
+    monthlyPriceData2();
   }
 
   render() {
     const title = brand.name + ' - Personal Dashboard';
     const description = brand.desc;
     const { classes } = this.props;
-    const { data } = this.state;
+    const { data, data2 } = this.state;
     return (
       <div>
         <Helmet>
@@ -55,9 +68,13 @@ class AnalyticDashboard extends PureComponent {
         </Helmet>
         {/* 1rd Section */}
         <Grid container spacing={3} className={classes.root}>
-          <Grid item md={12} xs={12}>
+          <Grid item md={6} xs={12}>
             <Divider className={classes.divider} />
-            <BarChart data={data} height={550} title="아파트 매매" desc="2015년 월별 아파트 매매 금액" />
+            <BarChart name="barChart1" data={data} height={550} title="아파트 매매" desc="2015년 월별 아파트 매매 금액" />
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <Divider className={classes.divider} />
+            <BarChart name="barChart2" data={data} height={550} title="아파트 매매" desc="2015년 월별 아파트 매매 금액" />
           </Grid>
         </Grid>
         {/* 2st Section */}

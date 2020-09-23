@@ -18,7 +18,7 @@ class BarChart extends Component {
 
     render() {
         const { classes, intl } = this.props;
-        const { title, desc } = this.props;
+        const { name, title, desc } = this.props;
         return (
             <PapperBlock
                 title={title}
@@ -29,7 +29,7 @@ class BarChart extends Component {
                 desc={desc}
                 className={classes.root}
             >
-                <div className='vis-barchart'/>
+                <div className={name}/>
             </PapperBlock>
             
         )
