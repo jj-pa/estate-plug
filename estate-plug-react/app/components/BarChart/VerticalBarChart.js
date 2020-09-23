@@ -3,10 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import { injectIntl, intlShape } from 'react-intl';
 import messages from './messages';
 import PapperBlock from '../PapperBlock/PapperBlock';
-import draw from './vis';
+import draw from './vertical-barchart';
 import styles from './widget-jss';
 
-class BarChart extends Component {
+class VerticalBarChart extends Component {
 
     componentDidMount() {
         draw(this.props);
@@ -36,4 +36,4 @@ class BarChart extends Component {
     }
 }
 
-export default withStyles(styles)(injectIntl(BarChart));
+export default withStyles(styles)(injectIntl(VerticalBarChart));

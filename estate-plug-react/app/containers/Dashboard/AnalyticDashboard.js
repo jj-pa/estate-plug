@@ -10,7 +10,8 @@ import {
   CounterIconsWidget,
   PerformanceChartWidget,
   TaskWidget,
-  BarChart
+  VerticalBarChart,
+  HorizontalBarChart
 } from 'enl-components';
 import styles from './dashboard-jss';
 import axios from 'axios';
@@ -66,37 +67,29 @@ class AnalyticDashboard extends PureComponent {
           <meta property="twitter:title" content={title} />
           <meta property="twitter:description" content={description} />
         </Helmet>
-        {/* 1rd Section */}
+
+        <Divider className={classes.divider} />
         <Grid container spacing={3} className={classes.root}>
-          <Grid item md={6} xs={12}>
-            <Divider className={classes.divider} />
-            <BarChart name="barChart1" data={data} height={550} title="아파트 매매" desc="2015년 월별 아파트 매매 금액" />
+          <Grid item xl={4} lg={6} md={12} xs={12}>
+            <VerticalBarChart name="barChart1" data={data} height={500} title="아파트 매매" desc="2015년 월별 아파트 매매 금액" />
           </Grid>
-          <Grid item md={6} xs={12}>
-            <Divider className={classes.divider} />
-            <BarChart name="barChart2" data={data} height={550} title="아파트 매매" desc="2015년 월별 아파트 매매 금액" />
+          <Grid item xl={4} lg={6} md={12} xs={12}>
+            <VerticalBarChart name="barChart2" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
           </Grid>
-        </Grid>
-        {/* 2st Section */}
-        <Grid container spacing={3} className={classes.root}>
-          <Grid item xs={12}>
-            <CounterIconsWidget />
+          <Grid item xl={4} lg={6} md={12} xs={12}>
+            <VerticalBarChart name="barChart3" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          </Grid>
+          <Grid item xl={4} lg={6} md={12} xs={12}>
+            <HorizontalBarChart name="barChart4" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          </Grid>
+          <Grid item xl={4} lg={6} md={12} xs={12}>
+            <HorizontalBarChart name="barChart5" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          </Grid>
+          <Grid item xl={4} lg={6} md={12} xs={12}>
+            <HorizontalBarChart name="barChart6" data={data} height={500} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
           </Grid>
         </Grid>
         <Divider className={classes.divider} />
-        {/* 3nd Section */}
-        <Grid container spacing={3} className={classes.root}>
-          <Grid item xs={12}>
-            <PerformanceChartWidget />
-          </Grid>
-        </Grid>
-        {/* 4rd Section */}
-        <Grid container spacing={3} className={classes.root}>
-          <Grid item md={12} xs={12}>
-            <Divider className={classes.divider} />
-            <TaskWidget />
-          </Grid>
-        </Grid>
       </div>
     );
   }

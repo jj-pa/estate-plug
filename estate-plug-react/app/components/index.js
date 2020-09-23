@@ -105,4 +105,5 @@ export ErrorWrap from './Error/ErrorWrap';
 export TemplateSettings from './TemplateSettings';
 
 // D3.js Chart
-export BarChart from './BarChart/BarChart'
+export VerticalBarChart from './BarChart/VerticalBarChart'
+export HorizontalBarChart from './BarChart/HorizontalBarChart'

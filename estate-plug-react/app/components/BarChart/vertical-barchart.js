@@ -43,6 +43,10 @@ const draw = (props) => {
             .data(data)
             .enter().append("rect")
             .attr("class", "bar")
+            .on("click", function (d) {
+                d3.selectAll('.' + name + ' ' + '.bar').style('fill', '#2296F3');
+                d3.select(this).style("fill", "#012B4E");
+            }) // 클릭 이벤트 색상
             .attr("x", function(d) { return x(d.year_month); })
             .attr("width", x.bandwidth())
             .attr("y", function(d) { return y(d.price); })
@@ -56,7 +60,7 @@ const draw = (props) => {
         // add the y Axis
         svg.append("g")
             .call(d3.axisLeft(y));
-    }, 300);
+    }, 100);
 }
 
 export default draw;
