@@ -1,0 +1,24 @@
+.bar { 
+  fill: steelblue; 
+}
+
+svg {
+  font-family: Sans-Serif, Arial;
+}
+
+.line {
+  stroke-width: 2;
+  fill: none;
+}
+
+.axis path {
+  stroke: white;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.title-text {
+  font-size: 14px;
+}

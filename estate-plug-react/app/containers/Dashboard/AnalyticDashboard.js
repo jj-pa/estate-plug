@@ -6,13 +6,15 @@ import { Helmet } from 'react-helmet';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+import dummy from 'enl-api/dummy/multiLineChartData';
 import {
   CounterIconsWidget,
   PerformanceChartWidget,
   TaskWidget,
   VerticalBarChart,
   HorizontalBarChart,
-  PieChart
+  PieChart,
+  MultiLineChart
 } from 'enl-components';
 import styles from './dashboard-jss';
 import axios from 'axios';
@@ -91,6 +93,9 @@ class AnalyticDashboard extends PureComponent {
           </Grid>
           <Grid item xl={3} lg={6} md={12} xs={12}>
             <PieChart name="pieChart1" data={data} height={400} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+          </Grid>
+          <Grid item xl={3} lg={6} md={12} xs={12}>
+            <MultiLineChart name="multiLineChart1" data={dummy} height={400} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
           </Grid>
         </Grid>
         <Divider className={classes.divider} />
