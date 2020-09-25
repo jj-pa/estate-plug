@@ -5,6 +5,7 @@ import Dashboard from '../Templates/Dashboard';
 import withAuthorizationRouter from '../Session/withAuthorizationRouter';
 import {
   AnalyticDashboard,
+  ApartmentDashboard,
   Parent,
   Profile, Timeline,
   ProductPage, CheckoutPage, Invoice,
@@ -20,6 +21,8 @@ class Application extends React.Component {
         <Switch>
           { /* Home */ }
           <Route exact path="/" component={AnalyticDashboard} />
+          { /* 아파트 매매 */ }
+          <Route exact path="/apartment" component={ApartmentDashboard} />
           { /* Posts */ }
           <Route exact path="/posts" component={Parent} />
           { /* Pages */ }

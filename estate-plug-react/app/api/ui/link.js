@@ -1,5 +1,6 @@
 module.exports = {
   home: '/',
+  apartment: '/apartment',
   market: '#',
   task: '/app/pages/task',
   profile: '/app/pages/user-profile',

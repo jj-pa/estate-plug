@@ -24,7 +24,7 @@ module.exports = [
         key: 'personal',
         name: '아파트 매매',
         icon: 'settings_brightness',
-        link: '/a1'
+        link: '/apartment'
       },
       {
         key: 'personal',

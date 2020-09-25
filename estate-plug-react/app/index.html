@@ -45,11 +45,12 @@
       #app { position: absolute;top:0;left: 0;background: #fafafa;width: 100%;min-height: 100%;z-index: 1000; display: flex;}
       .preloader-init { position: absolute; top: calc(50% - 65px); left: calc(50% - 65px) }
     </style>
+    
   </head>
   <body>
     <!-- Display a message if JS has been disabled on the browser. -->
     <noscript>If you're seeing this message, that means <strong>JavaScript has been disabled on your browser</strong>, please <strong>enable JS</strong> to make this app work.</noscript>
-
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4d9777dc146c48bf1d3a8dc09a248ab5&libraries=services"></script>
     <!-- The app hooks into this div -->
     <div id="app">
       <img src="/images/spinner.gif" class="preloader-init" alt="spinner" />
