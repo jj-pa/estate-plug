@@ -33,12 +33,18 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to estate-plug application." });
 });
 
 // route
-require("./app/routes/tutorial.routes")(app);
 require("./app/routes/apart_trade_monthly_price.routes")(app);
+require("./app/routes/apart_trade_compare_count.routes")(app);
+require("./app/routes/apart_trade_guro_indecrease.routes")(app);
+require("./app/routes/apart_trade_gwanak_indecrease.routes")(app);
+require("./app/routes/apart_trade_jongno_indecrease.routes")(app);
+require("./app/routes/apart_trade_kangdong_indecrease.routes")(app);
+require("./app/routes/apart_trade_kangnam_indecrease.routes")(app);
+require("./app/routes/apart_trade_targetarea_increase.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 4500;
