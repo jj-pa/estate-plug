@@ -109,6 +109,7 @@ export VerticalBarChart from './BarChart/VerticalBarChart'
 export HorizontalBarChart from './BarChart/HorizontalBarChart'
 export PieChart from './PieChart/PieChart'
 export MultiLineChart from './LineChart/MultiLineChart'
+export SingleLineChart from './LineChart/SingleLineChart'
 
 export MapContainer from './Map/MapContainer'
 export SearchPlace from './Map/SearchPlace'
