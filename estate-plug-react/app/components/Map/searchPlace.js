@@ -13,7 +13,7 @@ const SearchPlace = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setPlace(inputText);
+    setPlace(inputText + "아파트");
     setInputText("");
   };
 

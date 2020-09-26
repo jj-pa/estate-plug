@@ -23,18 +23,6 @@ class ApartmentDashboard extends PureComponent {
     place: '논현동'
   };
   
-  handleChange = (e) => {
-    this.setState({
-      name: e.target.value
-    })
-  }
-
-  handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      this.handleClick();
-    }
-  }
-
   //마운트 될때 실행
   componentDidMount() { 
     const { fetchData } = this.props;
@@ -46,6 +34,7 @@ class ApartmentDashboard extends PureComponent {
     const description = brand.desc;
     const { classes } = this.props;
     const { name } = this.state;
+    let infowindow = new kakao.maps.InfoWindow({zIndex:1});
     return (
       <div>
         <Helmet>
