@@ -26,7 +26,7 @@ const draw = (props) => {
 
         // format the data
         data.forEach(function(d) {
-            d.price = +d.price;
+            d[props.yKey] = +d[props.yKey];
         });
 
         // Scale the range of the data in the domains
@@ -35,8 +35,9 @@ const draw = (props) => {
             .padding(0.1);
         let y = d3.scaleLinear()
             .range([height, 0]);
-        x.domain(data.map(function(d) { return d.year_month; }));
-        y.domain([0, d3.max(data, function(d) { return d.price; })]);
+        x.domain(data.map(function(d) { return d[props.xKey]; }));
+        // 0이 아닌 데이터의 최소 값 - 10 으로 시작
+        y.domain([d3.min(data, function(d) { return d[props.yKey]; }) - 10, d3.max(data, function(d) { return d[props.yKey]; })]);
 
         // append the rectangles for the bar chart
         svg.selectAll(".bar")
@@ -47,10 +48,10 @@ const draw = (props) => {
                 d3.selectAll('.' + name + ' ' + '.bar').style('fill', '#2296F3');
                 d3.select(this).style("fill", "#012B4E");
             }) // 클릭 이벤트 색상
-            .attr("x", function(d) { return x(d.year_month); })
+            .attr("x", function(d) { return x(d[props.xKey]); })
             .attr("width", x.bandwidth())
-            .attr("y", function(d) { return y(d.price); })
-            .attr("height", function(d) { return height - y(d.price); });
+            .attr("y", function(d) { return y(d[props.yKey]); })
+            .attr("height", function(d) { return height - y(d[props.yKey]); });
 
         // add the x Axis
         svg.append("g")
