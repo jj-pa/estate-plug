@@ -99,6 +99,17 @@ class AnalyticDashboard extends PureComponent {
     }
   };
 
+  getApartTargetAreaIncreaseData = async () => {
+    try {
+      const response = await axios.get('http://localhost:4500/api/apart_trade_targetarea_increase');
+      this.setState({ // boards: 'test'
+        apartTargetAreaIncreaseData: response.data
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   //마운트 될때 실행
   componentDidMount() {
     const {
@@ -107,6 +118,7 @@ class AnalyticDashboard extends PureComponent {
       getApartJongnoIndecreaseData,
       getApartKangnamIndecreaseData,
       getApartKangdongIndecreaseData,
+      getApartTargetAreaIncreaseData,
     } = this;
     // getApartMonthlyPriceData();
     getApartGuroIndecreaseData();
@@ -114,6 +126,7 @@ class AnalyticDashboard extends PureComponent {
     getApartJongnoIndecreaseData();
     getApartKangnamIndecreaseData();
     getApartKangdongIndecreaseData();
+    getApartTargetAreaIncreaseData();
   }
 
   render() {
@@ -125,7 +138,8 @@ class AnalyticDashboard extends PureComponent {
       apartGwanakIndecreaseData,  
       apartJongnoIndecreaseData,
       apartKangdongIndecreaseData,
-      apartKangnamIndecreaseData
+      apartKangnamIndecreaseData,
+      apartTargetAreaIncreaseData
     } = this.state;
     return (
       <div>
@@ -142,12 +156,12 @@ class AnalyticDashboard extends PureComponent {
         <Grid container spacing={3} className={classes.root}>
           <Grid item xl={3} lg={4} md={6} xs={12}>
             <SingleLineChart name="singleLineChart1"
-              data={apartGuroIndecreaseData}
+              data={apartTargetAreaIncreaseData}
               height={300} 
               xKey = 'year_month'
-              yKey = 'indecrease'
-              title="아파트 매매" 
-              desc="2016년 월별 아파트 매매 금액" />
+              yKey = 'increase'
+              title="아파트 매매 (종로구 전체)" 
+              desc="2015년 종로구 전체 지역 거래 증감률" />
           </Grid>
           <Grid item xl={3} lg={4} md={6} xs={12}>
             <VerticalBarChart name="verticalBarChart1" 

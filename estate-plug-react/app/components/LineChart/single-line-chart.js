@@ -12,30 +12,25 @@ const draw = (props) => {
         const width = element.getBoundingClientRect().width + margin.left + margin.right;
         const height = props.height - margin.top - margin.bottom;
 
-        // The number of datapoints
-        const n = 21;
-
         // 5. X scale will use the index of our data
-        const xScale = d3.scaleLinear()
-            .domain([0, n-1]) // input
-            .range([0, width]); // output
+        let xScale = d3.scaleBand()
+            .range([0, width])
+            .padding(0.1);
+        xScale.domain(data.map(function(d) { return d[props.xKey]; }));
 
         // 6. Y scale will use the randomly generate number 
-        var yScale = d3.scaleLinear()
-            .domain([0, 1]) // input 
+        const yScale = d3.scaleLinear()
+            .domain([d3.min(data, function(d) { return d[props.yKey]; }) - 10, d3.max(data, function(d) { return d[props.yKey]; })]) // input 
             .range([height, 0]); // output 
 
         // 7. d3's line generator
-        var line = d3.line()
-            .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
-            .y(function(d) { return yScale(d.y); }) // set the y values for the line generator 
+        const line = d3.line()
+            .x(d => xScale(d[props.xKey]))
+            .y(d => yScale(d[props.yKey]))
             .curve(d3.curveMonotoneX) // apply smoothing to the line
 
-        // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
-        var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() } })
-
         // 1. Add the SVG to the page and employ #2
-        var svg = d3.select('.' + name).append("svg")
+        const svg = d3.select('.' + name).append("svg")
             .attr('class', name)
             .attr('width', '100%')
             .attr('height', '100%')
@@ -56,19 +51,20 @@ const draw = (props) => {
             .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
 
         // 9. Append the path, bind the data, and call the line generator 
+        console.log(data.map(function(d) { return d[props.yKey]; }));
         svg.append("path")
-            .datum(dataset) // 10. Binds data to the line 
+            .datum(data) // 10. Binds data to the line 
             .style('stroke', 'steelblue')
             .attr("class", "line") // Assign a class for styling 
             .attr("d", line); // 11. Calls the line generator 
 
         // 12. Appends a circle for each datapoint 
         svg.selectAll(".dot")
-            .data(dataset)
+            .data(data)
             .enter().append("circle") // Uses the enter().append() method
             .attr("class", "dot") // Assign a class for styling
-            .attr("cx", function(d, i) { return xScale(i) })
-            .attr("cy", function(d) { return yScale(d.y) })
+            .attr("cx", d => xScale(d[props.xKey]))
+            .attr("cy", d => yScale(d[props.yKey]))
             .attr("r", 5)
             .on("mouseover", function(a, b, c) { 
                     console.log(a) 
