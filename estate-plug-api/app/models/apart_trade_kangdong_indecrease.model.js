@@ -14,6 +14,6 @@ module.exports = mongoose => {
         return object;
     });
 
-    const ApartTradeKangdongIndecrease = mongoose.model("apart_trade_kangdong_indecrease", schema);
+    const ApartTradeKangdongIndecrease = mongoose.model("apart_trade_kangdong_indecrease", schema, "apart_trade_kangdong_indecrease");
     return ApartTradeKangdongIndecrease;
 };

@@ -3,7 +3,6 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    // Retrieve all Tutorials
     router.get("/", apart_trade_kangnam_indecrease.findAll);
   
     app.use('/api/apart_trade_kangnam_indecrease', router);

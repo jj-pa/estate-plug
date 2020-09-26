@@ -1,9 +1,8 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
         {
-            area: String,
             year_month: String,
-            indecrease: Number,
+            increase: Number,
         },
         { timestamps: true }
     );
@@ -14,6 +13,6 @@ module.exports = mongoose => {
         return object;
     });
 
-    const ApartTradeJongnoIndecrease = mongoose.model("apart_trade_jongno_indecrease", schema);
-    return ApartTradeJongnoIndecrease;
+    const ApartTradeCompareCount = mongoose.model("apart_trade_compare_count", schema, "apart_trade_compare_count");
+    return ApartTradeCompareCount;
 };

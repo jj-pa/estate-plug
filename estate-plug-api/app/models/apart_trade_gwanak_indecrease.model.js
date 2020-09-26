@@ -14,6 +14,6 @@ module.exports = mongoose => {
         return object;
     });
 
-    const ApartTradeGwanakIndecrease = mongoose.model("apart_trade_gwanak_indecrease", schema);
+    const ApartTradeGwanakIndecrease = mongoose.model("apart_trade_gwanak_indecrease", schema, "apart_trade_gwanak_indecrease");
     return ApartTradeGwanakIndecrease;
 };

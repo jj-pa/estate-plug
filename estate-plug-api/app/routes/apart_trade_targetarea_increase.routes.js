@@ -3,7 +3,6 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    // Retrieve all Tutorials
     router.get("/", apart_trade_targetarea_increase.findAll);
   
     app.use('/api/apart_trade_targetarea_increase', router);

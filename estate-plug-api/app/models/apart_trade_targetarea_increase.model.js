@@ -1,9 +1,9 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
         {
-            title: String,
-            description: String,
-            published: Boolean
+            year_month: String,
+            target_area_code: Number,
+            increase: Number,
         },
         { timestamps: true }
     );
@@ -14,6 +14,6 @@ module.exports = mongoose => {
         return object;
     });
 
-    const Tutorial = mongoose.model("tutorial", schema);
-    return Tutorial;
+    const ApartTradeTargetareaIncrease = mongoose.model("apart_trade_targetarea_increase", schema, "apart_trade_targetarea_increase");
+    return ApartTradeTargetareaIncrease;
 };
