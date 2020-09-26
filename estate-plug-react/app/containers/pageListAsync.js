@@ -7,6 +7,12 @@ export const AnalyticDashboard = Loadable({
   loading: Loading,
 });
 
+// 아파트매매
+export const ApartmentDashboard = Loadable({
+  loader: () => import('./Dashboard/ApartmentDashboard'),
+  loading: Loading,
+});
+
 // Pages
 export const Login = Loadable({
   loader: () => import('./Pages/Users/Login'),
