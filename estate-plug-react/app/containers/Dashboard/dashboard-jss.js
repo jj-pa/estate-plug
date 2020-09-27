@@ -24,7 +24,14 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       padding: '0 !important'
     }
-  }
+  },
+  textField: {
+    margin: theme.spacing(1),
+  },
+  button: {
+    margin: '0',
+    height: '35px'
+  },
 });
 
 export default styles;

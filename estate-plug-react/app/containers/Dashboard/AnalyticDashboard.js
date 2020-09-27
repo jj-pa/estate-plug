@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import brand from 'enl-api/dummy/brand';
 import chartData from 'enl-api/dummy/chartData';
 import { Helmet } from 'react-helmet';
@@ -17,9 +18,35 @@ import {
   MultiLineChart,
   SingleLineChart
 } from 'enl-components';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import styles from './dashboard-jss';
 import axios from 'axios';
 
+const CssTextField = withStyles({
+  root: {
+    '& label.Mui-focused': {
+    },
+    '& .MuiInput-underline:after': {
+    },
+    '& .MuiInputLabel-formControl': {
+      top: 5
+    },
+    '& .MuiOutlinedInput-root': {
+      '& input': {
+        padding: '12px 8px 0',
+      },
+      '& fieldset': {
+      },
+      '&:hover fieldset': {
+      },
+      '&.Mui-focused fieldset': {
+      },
+    },
+  },
+  input: {
+  }
+})(TextField);
 
 class AnalyticDashboard extends PureComponent {
   state = {
@@ -31,6 +58,7 @@ class AnalyticDashboard extends PureComponent {
     apartKangdongIndecreaseData: [],
     apartKangnamIndecreaseData: [],
     apartTargetAreaIncreaseData: [],
+    age: '',
   };
 
   /*getApartMonthlyPriceData = async () => {
@@ -110,6 +138,12 @@ class AnalyticDashboard extends PureComponent {
     }
   };
 
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
+    });
+  };
+
   //마운트 될때 실행
   componentDidMount() {
     const {
@@ -139,7 +173,8 @@ class AnalyticDashboard extends PureComponent {
       apartJongnoIndecreaseData,
       apartKangdongIndecreaseData,
       apartKangnamIndecreaseData,
-      apartTargetAreaIncreaseData
+      apartTargetAreaIncreaseData,
+      age,
     } = this.state;
     return (
       <div>
@@ -154,6 +189,19 @@ class AnalyticDashboard extends PureComponent {
 
         <Divider className={classes.divider} />
         <Grid container spacing={3} className={classes.root}>
+          <Grid container xs={12} alignItems='center'>
+            <CssTextField
+                id="outlined-uncontrolled"
+                label="건물 명"
+                defaultValue=""
+                className={classNames(classes.textField)}
+                margin="normal"
+                variant="outlined"
+              />
+            <Button variant="outlined" className={classes.button}>
+              검색
+            </Button>
+          </Grid>
           <Grid item xl={3} lg={4} md={6} xs={12}>
             <SingleLineChart name="singleLineChart1"
               data={apartTargetAreaIncreaseData}
