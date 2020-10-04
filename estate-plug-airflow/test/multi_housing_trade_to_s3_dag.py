@@ -46,7 +46,6 @@ def get_trade_frame(service_key, lawd_cd, deal_ymd):
         item['대지권면적'] = float(item['대지권면적'])
         item['전용면적'] = float(item['전용면적'])
         item['층'] = int(item['층'])
-        item['건축년도'] = int(item['건축년도'])
 
         trade_row = pd.Series(item)
         trade_frame = trade_frame.append(trade_row, ignore_index=True)
@@ -122,4 +121,4 @@ def task_multi_housing_trade_data(input_year, input_month, **kwargs):
     # kafka_producer.produce(trade_df_by_api.to_json(orient='index'))
     # response에 담겨있는 Buckets의 이름만 가져와 buckets 변수에 배열로 저장.
 
-task_multi_housing_trade_data('2015','4')
+task_multi_housing_trade_data('2016','11')
