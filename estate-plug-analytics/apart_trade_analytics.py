@@ -166,3 +166,44 @@ database = connect_mongo()
 collection = database["apart_trade_yearly_count_top_10"]
 collection.insert_many(result_df.to_dict('records'))
 
+# %%
+# 지역별 평당 매매 금액 상위 10개 지역 - 2015
+client = get_s3_client()  # s3 client
+
+# 날짜 변수 생성
+year_month_data = list()
+start_year = 2016
+start_month = 1
+end_year = 2016
+end_month = 12
+
+# 날짜 범위만큼 아파트 매매 데이터 로드
+result_df = pd.DataFrame(columns=['area_code'])
+for result in per_delta(date(year=int(start_year), month=int(start_month), day=1),
+                        date(year=int(end_year), month=int(end_month), day=28),
+                        relativedelta(months=1)):
+    df_trade = read_trade(_s3Obj=client, _item="apart", _year=result.strftime("%Y"), _month=result.strftime("%m"))
+    df_trade.drop(columns=['지번', '층', '년', '월', '일', '아파트', '법정동', '매매일', '건축년도'], inplace=True)
+    df_trade.rename(columns={'거래금액': 'price', '지역코드': 'area_code', '전용면적': 'size'}, inplace=True)  # 값 컬럼명 변경
+    df_trade['year'] = result.strftime("%Y")
+    df_trade['year_month'] = result.strftime("%Y%m")  # 날짜 데이터 추가
+    df_trade = df_trade[df_trade['price'].astype(str) != '거래금액'].astype(float)  # 이상 값 필터링
+    df_trade.astype({"area_code": 'str'})
+    df_trade.astype({"price": 'float'})
+
+    df_trade['pyeong'] = df_trade['size'] / 3.3  # 전용면적 평 수 계산
+    df_trade['pyeong'] = df_trade['pyeong'].round(0)  # 소수점 반올림 처리
+    df_trade['pyeong_price'] = df_trade['price'] / df_trade['pyeong']  # 평당 금액
+    result_df = pd.concat([result_df, df_trade], ignore_index=True)  # 프레임 병합
+
+result_df.drop(columns=['price', 'size', 'pyeong', 'year_month'], inplace=True)  # 프레임 필요없는 컬럼 제거
+result_df = result_df.groupby(by=['area_code', 'year'], as_index=False).mean()  # 평 금액 평균 값 산출
+result_df['pyeong_price'] = result_df['pyeong_price'].round(0)  # 평당 금액 반올림 처리
+result_df = result_df.groupby(by=['area_code', 'year'], as_index=False).sum().\
+    sort_values(by='pyeong_price', ascending=False).head(10)
+
+# 데이터베이스 프레임 삽입
+database = connect_mongo()
+collection = database["apart_trade_monthly_pyeong_price_top_10"]
+collection.insert_many(result_df.to_dict('records'))
+
