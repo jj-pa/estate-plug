@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import brand from 'enl-api/dummy/brand';
 import chartData from 'enl-api/dummy/chartData';
+import pieChartData from 'enl-api/dummy/pieChartData';
+import multiLineData from 'enl-api/dummy/multiLineData';
 import { Helmet } from 'react-helmet';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -44,8 +46,6 @@ const CssTextField = withStyles({
       },
     },
   },
-  input: {
-  }
 })(TextField);
 
 class AnalyticDashboard extends PureComponent {
@@ -189,7 +189,7 @@ class AnalyticDashboard extends PureComponent {
 
         <Divider className={classes.divider} />
         <Grid container spacing={3} className={classes.root}>
-          <Grid container xs={12} alignItems='center'>
+          <Grid container alignItems='center'>
             <CssTextField
                 id="outlined-uncontrolled"
                 label="건물 명"
@@ -302,10 +302,18 @@ class AnalyticDashboard extends PureComponent {
               desc="2015년 월별 아파트 매매 증감율" />
           </Grid>
           <Grid item xl={3} lg={4} md={6} xs={12}>
-            <PieChart name="pieChart1" data={apartGuroIndecreaseData} height={300} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+            <PieChart name="pieChart1" 
+              data={pieChartData}
+              height={300}
+              title="아파트 매매"
+              desc="2016년 월별 아파트 매매 금액" />
           </Grid>
           <Grid item xl={3} lg={4} md={6} xs={12}>
-            <MultiLineChart name="multiLineChart1" data={dummy} height={300} title="아파트 매매" desc="2016년 월별 아파트 매매 금액" />
+            <MultiLineChart name="multiLineChart1"
+              data={multiLineData}
+              height={300} 
+              title="아파트 매매" 
+              desc="2016년 월별 아파트 매매 금액" />
           </Grid>
         </Grid>
         <Divider className={classes.divider} />

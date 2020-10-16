@@ -6,54 +6,14 @@ const draw = (props) => {
         const name = props.name;
         d3.select('.' + name + ' > *').remove();
         d3.select('svg.' + name).remove();
+        
+        const data = props.data;
 
-        const data = [
-            {
-                name: "USA",
-                values: [
-                    { date: "2000", price: "100" },
-                    { date: "2001", price: "110" },
-                    { date: "2002", price: "145" },
-                    { date: "2003", price: "241" },
-                    { date: "2004", price: "101" },
-                    { date: "2005", price: "90" },
-                    { date: "2006", price: "10" },
-                    { date: "2007", price: "35" },
-                    { date: "2008", price: "21" },
-                    { date: "2009", price: "201" }
-                ]
-            },
-            {
-                name: "Canada",
-                values: [
-                    { date: "2000", price: "200" },
-                    { date: "2001", price: "120" },
-                    { date: "2002", price: "33" },
-                    { date: "2003", price: "21" },
-                    { date: "2004", price: "51" },
-                    { date: "2005", price: "190" },
-                    { date: "2006", price: "120" },
-                    { date: "2007", price: "85" },
-                    { date: "2008", price: "221" },
-                    { date: "2009", price: "101" }
-                ]
-            },
-            {
-                name: "Maxico",
-                values: [
-                    { date: "2000", price: "50" },
-                    { date: "2001", price: "10" },
-                    { date: "2002", price: "5" },
-                    { date: "2003", price: "71" },
-                    { date: "2004", price: "20" },
-                    { date: "2005", price: "9" },
-                    { date: "2006", price: "220" },
-                    { date: "2007", price: "235" },
-                    { date: "2008", price: "61" },
-                    { date: "2009", price: "10" }
-                ]
-            }
-        ];
+        console.log('1.-------------------');
+        console.log(props.data);
+        console.log('2.-------------------');
+        // console.log(data);
+        // console.log('3.-------------------');
 
         const margin = { top: 20, right: 20, bottom: 30, left: 40 };
         const element = d3.select('.' + name).node();
@@ -74,10 +34,11 @@ const draw = (props) => {
 
 
         /* Format Data */
-        var parseDate = d3.timeParse("%Y");
+        // var parseDate = d3.timeParse("%Y");
+        // date가 문자열 요소로 인식되어 파싱 ㄴ
         data.forEach(function (d) {
             d.values.forEach(function (d) {
-                d.date = parseDate(d.date);
+                d.date = d.date;
                 d.price = +d.price;
             });
         });

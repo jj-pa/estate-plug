@@ -8,30 +8,7 @@ const draw = (props) => {
         d3.select('.' + name + ' > *').remove();
         d3.select('svg.' + name).remove();
         // define data
-        let dataset = [
-            {label: "test1", count: 13},
-            {label: "test2", count: 83},
-            {label: "test3", count: 1.4},
-            {label: "test4", count: 2.3},
-            {label: "test5", count: 46},
-            {label: "test6", count: 300},
-            {label: "test7", count: 38},
-            {label: "test8", count: 5.5},
-            {label: "test9", count: 5},
-            {label: "test10", count: 20},
-            {label: "test11", count: 33},
-            {label: "test12", count: 1.5},
-            {label: "test13", count: 72},
-            {label: "test14", count: 2.9},
-            {label: "test15", count: 33},
-            {label: "test16", count: 29},
-            {label: "test17", count: 0.01},
-            {label: "test18", count: 6.5},
-            {label: "test19", count: 2.5},
-            {label: "test20", count: 61},
-            {label: "test21", count: 74},
-            {label: "test22", count: 52}
-        ];
+        let dataset = props.data;
 
         // chart dimensions
         const element = d3.select('.' + name).node();
@@ -137,7 +114,7 @@ const draw = (props) => {
             console.log(d);
             let percent = Math.round(1000 * d.data.count / total) / 10; // calculate percent
             tooltip.select('.label').html(d.data.label); // set current label           
-            tooltip.select('.count').html('$' + d.data.count); // set current count            
+            tooltip.select('.count').html('₩' + d.data.count); // set current count            
             tooltip.select('.percent').html(percent + '%'); // set percent calculated above          
             tooltip.style('display', 'block'); // set display                     
             tooltip.style('position', 'absolute');                     
