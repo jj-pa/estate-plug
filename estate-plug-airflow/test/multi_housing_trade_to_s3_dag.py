@@ -121,4 +121,4 @@ def task_multi_housing_trade_data(input_year, input_month, **kwargs):
     # kafka_producer.produce(trade_df_by_api.to_json(orient='index'))
     # response에 담겨있는 Buckets의 이름만 가져와 buckets 변수에 배열로 저장.
 
-task_multi_housing_trade_data('2019','2')
+task_multi_housing_trade_data('2019','6')

@@ -124,6 +124,6 @@ def task_apart_contract_data(input_year, input_month, **kwargs):
     # response에 담겨있는 Buckets의 이름만 가져와 buckets 변수에 배열로 저장.
 
 
-task_apart_contract_data('2019','10')
+task_apart_contract_data('2020','2')
 
 
