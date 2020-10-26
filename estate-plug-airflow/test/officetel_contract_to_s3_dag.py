@@ -122,6 +122,6 @@ def task_officetel_contract_data(input_year, input_month, **kwargs):
     # kafka_producer.produce(contract_df_by_api.to_json(orient='index'))
     # response에 담겨있는 Buckets의 이름만 가져와 buckets 변수에 배열로 저장.
 
-task_officetel_contract_data('2019','11')
+task_officetel_contract_data('2020','1')
 
 

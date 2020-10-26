@@ -120,6 +120,6 @@ def task_apart_trade_data(input_year, input_month, **kwargs):
     # kafka_producer.produce(trade_df_by_api.to_json(orient='index'))
     # response에 담겨있는 Buckets의 이름만 가져와 buckets 변수에 배열로 저장.
 
-task_apart_trade_data('2020','3')
+task_apart_trade_data('2020','5')
 
 
