@@ -1,6 +1,6 @@
 module.exports = {
   home: '/',
-  apartment: '/apartment',
+  apart_trade: '/apart_trade',
   market: '#',
   task: '/app/pages/task',
   profile: '/app/pages/user-profile',

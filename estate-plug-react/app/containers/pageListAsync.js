@@ -7,9 +7,48 @@ export const AnalyticDashboard = Loadable({
   loading: Loading,
 });
 
-// 아파트매매
-export const ApartmentDashboard = Loadable({
-  loader: () => import('./Dashboard/ApartmentDashboard'),
+export const ApartTradeDashboard = Loadable({
+  loader: () => import('./Dashboard/ApartTradeDashboard'),
+  loading: Loading,
+});
+
+export const ApartContractDashboard = Loadable({
+  loader: () => import('./Dashboard/ApartContractDashboard'),
+  loading: Loading,
+});
+
+export const DetachedTradeDashboard = Loadable({
+  loader: () => import('./Dashboard/DetachedTradeDashboard'),
+  loading: Loading,
+});
+
+export const DetachedContractDashboard = Loadable({
+  loader: () => import('./Dashboard/DetachedContractDashboard'),
+  loading: Loading,
+});
+
+export const TenementTradeDashboard = Loadable({
+  loader: () => import('./Dashboard/TenementTradeDashboard'),
+  loading: Loading,
+});
+
+export const TenementContractDashboard = Loadable({
+  loader: () => import('./Dashboard/TenementContractDashboard'),
+  loading: Loading,
+});
+
+export const LandTradeDashboard = Loadable({
+  loader: () => import('./Dashboard/LandTradeDashboard'),
+  loading: Loading,
+});
+
+export const OfficetelTradeDashboard = Loadable({
+  loader: () => import('./Dashboard/OfficetelTradeDashboard'),
+  loading: Loading,
+});
+
+export const OfficetelContractDashboard = Loadable({
+  loader: () => import('./Dashboard/OfficetelContractDashboard'),
   loading: Loading,
 });
 

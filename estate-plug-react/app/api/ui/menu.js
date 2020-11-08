@@ -24,13 +24,13 @@ module.exports = [
         key: 'personal',
         name: '아파트 매매',
         icon: 'settings_brightness',
-        link: '/apartment'
+        link: '/apart-trade'
       },
       {
         key: 'personal',
         name: '아파트 전월세',
         icon: 'settings_brightness',
-        link: '/a1'
+        link: '/apart-contract'
       },
       {
         key: 'dashboard',
@@ -41,13 +41,13 @@ module.exports = [
         key: 'personal',
         name: '단독/다가구 매매',
         icon: 'settings_brightness',
-        link: '/a1'
+        link: '/detached-trade'
       },
       {
         key: 'personal',
         name: '단독/다가구 전월세',
         icon: 'settings_brightness',
-        link: '/a1'
+        link: '/detached-contract'
       },
       {
         key: 'dashboard',
@@ -58,13 +58,13 @@ module.exports = [
         key: 'personal',
         name: '연립다세대 매매',
         icon: 'settings_brightness',
-        link: '/a1'
+        link: '/tenement-trade'
       },
       {
         key: 'personal',
         name: '연립다세대 전월세',
         icon: 'settings_brightness',
-        link: '/a1'
+        link: '/tenement-contract'
       },
       {
         key: 'dashboard',
@@ -75,13 +75,13 @@ module.exports = [
         key: 'personal',
         name: '오피스텔 매매',
         icon: 'settings_brightness',
-        link: '/a1'
+        link: '/officetel-trade'
       },
       {
         key: 'personal',
         name: '오피스텔 전월세',
         icon: 'settings_brightness',
-        link: '/a1'
+        link: '/officetel-contract'
       },
       {
         key: 'dashboard',
@@ -92,7 +92,7 @@ module.exports = [
         key: 'personal',
         name: '토지 거래',
         icon: 'settings_brightness',
-        link: '/a1'
+        link: '/land-trade'
       }
     ]
   },

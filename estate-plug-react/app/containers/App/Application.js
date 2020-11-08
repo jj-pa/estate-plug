@@ -5,7 +5,15 @@ import Dashboard from '../Templates/Dashboard';
 import withAuthorizationRouter from '../Session/withAuthorizationRouter';
 import {
   AnalyticDashboard,
-  ApartmentDashboard,
+  ApartTradeDashboard,
+  ApartContractDashboard,
+  DetachedTradeDashboard,
+  DetachedContractDashboard,
+  LandTradeDashboard,
+  TenementTradeDashboard,
+  TenementContractDashboard,
+  OfficetelTradeDashboard,
+  OfficetelContractDashboard,
   Parent,
   Profile, Timeline,
   ProductPage, CheckoutPage, Invoice,
@@ -19,10 +27,17 @@ class Application extends React.Component {
     return (
       <Dashboard history={history} changeMode={changeMode}>
         <Switch>
-          { /* Home */ }
           <Route exact path="/" component={AnalyticDashboard} />
-          { /* 아파트 매매 */ }
-          <Route exact path="/apartment" component={ApartmentDashboard} />
+          <Route exact path="/apart-trade" component={ApartTradeDashboard} />
+          <Route exact path="/apart-contract" component={ApartContractDashboard} />
+          <Route exact path="/detached-trade" component={DetachedTradeDashboard} />
+          <Route exact path="/detached-contract" component={DetachedContractDashboard} />
+          <Route exact path="/land-trade" component={LandTradeDashboard} />
+          <Route exact path="/tenement-trade" component={TenementTradeDashboard} />
+          <Route exact path="/tenement-contract" component={TenementContractDashboard} />
+          <Route exact path="/officetel-trade" component={OfficetelTradeDashboard} />
+          <Route exact path="/officetel-contract" component={OfficetelContractDashboard} />
+
           { /* Posts */ }
           <Route exact path="/posts" component={Parent} />
           { /* Pages */ }

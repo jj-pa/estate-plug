@@ -7,7 +7,8 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import styles from './dashboard-jss';import {
+import styles from './dashboard-jss';
+import {
   MapContainer,
   SearchPlace,
   TaskWidget,
@@ -17,19 +18,19 @@ import styles from './dashboard-jss';import {
   MultiLineChart
 } from 'enl-components';
 
-class ApartmentDashboard extends PureComponent {
+class ApartTradeDashboard extends PureComponent {
   state = {
     name: '',
     place: '논현동'
   };
-  
+
   //마운트 될때 실행
-  componentDidMount() { 
+  componentDidMount() {
     const { fetchData } = this.props;
     let infowindow = new kakao.maps.InfoWindow({zIndex:1});
   }
   render() {
-    
+
     const title = brand.name + ' - Personal Dashboard';
     const description = brand.desc;
     const { classes } = this.props;
@@ -51,15 +52,15 @@ class ApartmentDashboard extends PureComponent {
         </div>
         <Grid container spacing={3} className={classes.root}>
           <Grid item md={12} xs={12}>
-          <MapContainer searchPlace={this.state.place}></MapContainer>  
+          <MapContainer searchPlace={this.state.place}></MapContainer>
           </Grid>
         </Grid>
       </div>
     );
   }
 }
-ApartmentDashboard.propTypes = {
+ApartTradeDashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ApartmentDashboard);
+export default withStyles(styles)(ApartTradeDashboard);
