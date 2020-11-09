@@ -37,7 +37,7 @@ def read_trade(_s3Obj, _item, _year, _month):
 def count_trade(dataframe):
     seriesData = dataframe['지역코드'].value_counts().sort_index()
     if '지역코드' in seriesData:
-        seriesData = seriesData.drop('지역코드')  # Filfltering
+        seriesData = seriesData.drop('지역코드')  # Filtering
 
     seriesData.index = seriesData.index.astype(int)
 
