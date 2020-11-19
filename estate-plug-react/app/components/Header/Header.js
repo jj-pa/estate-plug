@@ -135,7 +135,6 @@ class Header extends React.Component {
             </span>
             <Hidden smDown>
               <NavLink to="/" className={classNames(classes.brand, classes.brandBar)}>
-                <img src={logo} alt={brand.name} />
                 {brand.name}
               </NavLink>
             </Hidden>

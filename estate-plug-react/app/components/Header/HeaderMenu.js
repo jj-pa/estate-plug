@@ -150,7 +150,6 @@ class HeaderMenu extends React.Component { // eslint-disable-line
           </Hidden>
           <Hidden smDown>
             <NavLink to={logoLink} className={classes.brand}>
-              <img src={logo} alt={brand.name} />
               {brand.name}
             </NavLink>
           </Hidden>

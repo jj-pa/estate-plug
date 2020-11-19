@@ -43,7 +43,6 @@ class ResetForm extends React.Component {
       <section>
         <div className={Type.textCenter}>
           <NavLink to="/" className={classNames(classes.brand, classes.centerFlex)}>
-            <img src={logo} alt={brand.name} />
             {brand.name}
           </NavLink>
         </div>

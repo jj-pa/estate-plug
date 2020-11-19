@@ -47,7 +47,6 @@ class Login extends React.Component {
               <div className={classes.openingWrap}>
                 <div className={classes.openingHead}>
                   <NavLink to="/" className={classes.brand}>
-                    <img src={logo} alt={brand.name} />
                     {brand.name}
                   </NavLink>
                 </div>

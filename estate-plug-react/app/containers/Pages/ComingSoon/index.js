@@ -53,7 +53,6 @@ class ComingSoon extends React.Component {
             >
               <div className={classes.brandCenter}>
                 <div className={classNames(classes.brand, classes.invert)}>
-                  <img src={logo} alt={brand.name} />
                   {brand.name}
                 </div>
               </div>

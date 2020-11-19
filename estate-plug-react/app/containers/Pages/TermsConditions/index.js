@@ -30,7 +30,6 @@ class TermsConditions extends React.Component {
           <section className={classes.userFormWrap}>
             <div className={Type.textCenter}>
               <NavLink to="/" className={classNames(classes.brand, classes.centerFlex)}>
-                <img src={logo} alt={brand.name} />
                 {brand.name}
               </NavLink>
             </div>
