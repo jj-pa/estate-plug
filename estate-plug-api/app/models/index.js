@@ -41,6 +41,17 @@ db.multi_housing_contract_yearly_increase = require("./yearly_increase/multi_hou
 db.officetel_trade_yearly_increase = require("./yearly_increase/officetel_trade_yearly_increase.model.js")(mongoose);
 db.officetel_contract_yearly_increase = require("./yearly_increase/officetel_contract_yearly_increase.model.js")(mongoose);
 
+/* yearly percentage */
+db.apart_trade_yearly_percentage = require("./yearly_percentage/apart_trade_yearly_percentage.model.js")(mongoose);
+db.apart_contract_yearly_percentage = require("./yearly_percentage/apart_contract_yearly_percentage.model.js")(mongoose);
+db.detached_trade_yearly_percentage = require("./yearly_percentage/detached_trade_yearly_percentage.model.js")(mongoose);
+db.detached_contract_yearly_percentage = require("./yearly_percentage/detached_contract_yearly_percentage.model.js")(mongoose);
+db.land_trade_yearly_percentage = require("./yearly_percentage/land_trade_yearly_percentage.model.js")(mongoose);
+db.multi_housing_trade_yearly_percentage = require("./yearly_percentage/multi_housing_trade_yearly_percentage.model.js")(mongoose);
+db.multi_housing_contract_yearly_percentage = require("./yearly_percentage/multi_housing_contract_yearly_percentage.model.js")(mongoose);
+db.officetel_trade_yearly_percentage = require("./yearly_percentage/officetel_trade_yearly_percentage.model.js")(mongoose);
+db.officetel_contract_yearly_percentage = require("./yearly_percentage/officetel_contract_yearly_percentage.model.js")(mongoose);
+
 /* compare */
 db.apart_trade_compare_count = require("./apart_trade_compare_count.model.js")(mongoose);
 

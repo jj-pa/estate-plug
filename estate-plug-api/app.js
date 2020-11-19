@@ -59,15 +59,26 @@ require("./app/routes/monthly_increase/officetel_trade_monthly_increase.routes")
 require("./app/routes/monthly_increase/officetel_contract_monthly_increase.routes")(app);
 
 // route (yearly increase)
-require("./app/routes/yearly_increase/apart_trade_monthly_increase.routes")(app);
-require("./app/routes/yearly_increase/apart_contract_monthly_increase.routes")(app);
-require("./app/routes/yearly_increase/detached_trade_monthly_increase.routes")(app);
-require("./app/routes/yearly_increase/detached_contract_monthly_increase.routes")(app);
-require("./app/routes/yearly_increase/land_trade_monthly_increase.routes")(app);
-require("./app/routes/yearly_increase/multi_housing_trade_monthly_increase.routes")(app);
-require("./app/routes/yearly_increase/multi_housing_contract_monthly_increase.routes")(app);
-require("./app/routes/yearly_increase/officetel_trade_monthly_increase.routes")(app);
-require("./app/routes/yearly_increase/officetel_contract_monthly_increase.routes")(app);
+require("./app/routes/yearly_increase/apart_trade_yearly_increase.routes")(app);
+require("./app/routes/yearly_increase/apart_contract_yearly_increase.routes")(app);
+require("./app/routes/yearly_increase/detached_trade_yearly_increase.routes")(app);
+require("./app/routes/yearly_increase/detached_contract_yearly_increase.routes")(app);
+require("./app/routes/yearly_increase/land_trade_yearly_increase.routes")(app);
+require("./app/routes/yearly_increase/multi_housing_trade_yearly_increase.routes")(app);
+require("./app/routes/yearly_increase/multi_housing_contract_yearly_increase.routes")(app);
+require("./app/routes/yearly_increase/officetel_trade_yearly_increase.routes")(app);
+require("./app/routes/yearly_increase/officetel_contract_yearly_increase.routes")(app);
+
+// route (yearly percentage)
+require("./app/routes/yearly_percentage/apart_trade_yearly_percentage.routes")(app);
+require("./app/routes/yearly_percentage/apart_contract_yearly_percentage.routes")(app);
+require("./app/routes/yearly_percentage/detached_trade_yearly_percentage.routes")(app);
+require("./app/routes/yearly_percentage/detached_contract_yearly_percentage.routes")(app);
+require("./app/routes/yearly_percentage/land_trade_yearly_percentage.routes")(app);
+require("./app/routes/yearly_percentage/multi_housing_trade_yearly_percentage.routes")(app);
+require("./app/routes/yearly_percentage/multi_housing_contract_yearly_percentage.routes")(app);
+require("./app/routes/yearly_percentage/officetel_trade_yearly_percentage.routes")(app);
+require("./app/routes/yearly_percentage/officetel_contract_yearly_percentage.routes")(app);
 
 // route (etc)
 require("./app/routes/apart_trade_compare_count.routes")(app);
