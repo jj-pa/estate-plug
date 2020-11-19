@@ -14,6 +14,9 @@ module.exports = mongoose => {
         return object;
     });
 
-    const DetachedTradeYearlyPercentage = mongoose.model("detached_trade_yearly_percentage", schema);
+    const DetachedTradeYearlyPercentage = mongoose.model(
+      "detached_trade_yearly_percentage",
+      schema,
+      "detached_trade_yearly_percentage");
     return DetachedTradeYearlyPercentage;
 };

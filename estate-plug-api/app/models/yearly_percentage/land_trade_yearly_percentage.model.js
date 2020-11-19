@@ -14,6 +14,9 @@ module.exports = mongoose => {
         return object;
     });
 
-    const LandTradeYearlyPercentage = mongoose.model("land_trade_yearly_percentage", schema);
+    const LandTradeYearlyPercentage = mongoose.model(
+      "land_trade_yearly_percentage",
+      schema,
+      "land_trade_yearly_percentage");
     return LandTradeYearlyPercentage;
 };

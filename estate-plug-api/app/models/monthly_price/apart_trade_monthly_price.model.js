@@ -13,6 +13,9 @@ module.exports = mongoose => {
         return object;
     });
 
-    const ApartTradeMonthlyPrice = mongoose.model("apart_trade_monthly_price", schema);
+    const ApartTradeMonthlyPrice = mongoose.model(
+      "apart_trade_monthly_price",
+      schema,
+      "apart_trade_monthly_price");
     return ApartTradeMonthlyPrice;
 };

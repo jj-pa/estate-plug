@@ -13,6 +13,9 @@ module.exports = mongoose => {
         return object;
     });
 
-    const OfficetelContractMonthlyIncrease = mongoose.model("officetel_contract_monthly_increase", schema);
+    const OfficetelContractMonthlyIncrease = mongoose.model(
+      "officetel_contract_monthly_increase",
+      schema,
+      "officetel_contract_monthly_increase");
     return OfficetelContractMonthlyIncrease;
 };

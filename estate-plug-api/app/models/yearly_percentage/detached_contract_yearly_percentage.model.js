@@ -14,6 +14,9 @@ module.exports = mongoose => {
         return object;
     });
 
-    const DetachedContractYearlyPercentage = mongoose.model("detached_contract_yearly_percentage", schema);
+    const DetachedContractYearlyPercentage = mongoose.model(
+      "detached_contract_yearly_percentage",
+      schema,
+      "detached_contract_yearly_percentage");
     return DetachedContractYearlyPercentage;
 };

@@ -14,6 +14,9 @@ module.exports = mongoose => {
         return object;
     });
 
-    const ApartContractYearlyPercentage = mongoose.model("apart_contract_yearly_percentage", schema);
+    const ApartContractYearlyPercentage = mongoose.model(
+      "apart_contract_yearly_percentage",
+      schema,
+      "apart_contract_yearly_percentage");
     return ApartContractYearlyPercentage;
 };

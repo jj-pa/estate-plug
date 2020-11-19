@@ -13,6 +13,9 @@ module.exports = mongoose => {
         return object;
     });
 
-    const OfficetelTradeYearlyIncrease = mongoose.model("officetel_trade_yearly_increase", schema);
+    const OfficetelTradeYearlyIncrease = mongoose.model(
+      "officetel_trade_yearly_increase",
+      schema,
+      "officetel_trade_yearly_increase");
     return OfficetelTradeYearlyIncrease;
 };

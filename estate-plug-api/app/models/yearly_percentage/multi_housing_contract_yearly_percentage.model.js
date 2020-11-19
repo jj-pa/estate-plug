@@ -14,6 +14,9 @@ module.exports = mongoose => {
         return object;
     });
 
-    const MultiHousingContractYearlyPercentage = mongoose.model("multi_housing_contract_yearly_percentage", schema);
+    const MultiHousingContractYearlyPercentage = mongoose.model(
+      "multi_housing_contract_yearly_percentage",
+      schema,
+      "multi_housing_contract_yearly_percentage");
     return MultiHousingContractYearlyPercentage;
 };

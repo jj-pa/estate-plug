@@ -23,6 +23,7 @@ class ApartTradeDashboard extends PureComponent {
     apartKangdongIndecreaseData: [],
     apartKangnamIndecreaseData: [],
     apartTargetAreaIncreaseData: [],
+    apartMonthlyIncreaseData: [],
   };
 
   componentDidMount() {
@@ -33,6 +34,7 @@ class ApartTradeDashboard extends PureComponent {
       getApartKangnamIndecreaseData,
       getApartKangdongIndecreaseData,
       getApartTargetAreaIncreaseData,
+      getApartMonthlyIncreaseData
     } = this;
     // getApartMonthlyPriceData();
     getApartGuroIndecreaseData();
@@ -41,7 +43,19 @@ class ApartTradeDashboard extends PureComponent {
     getApartKangnamIndecreaseData();
     getApartKangdongIndecreaseData();
     getApartTargetAreaIncreaseData();
+    getApartMonthlyIncreaseData();
   }
+
+  getApartMonthlyIncreaseData = async () => {
+    try {
+      const response = await axios.get('http://localhost:4500/api/apart_trade_monthly_increase');
+      this.setState({ // boards: 'test'
+        apartMonthlyIncreaseData: response.data
+      });
+    } catch (e) {
+      console.log('apart_trade_monthly_increase', e);
+    }
+  };
 
   getApartGuroIndecreaseData = async () => {
     try {
@@ -114,6 +128,7 @@ class ApartTradeDashboard extends PureComponent {
     const description = brand.desc;
     const { classes } = this.props;
     const {
+      apartMonthlyIncreaseData,
       apartGuroIndecreaseData,
       apartGwanakIndecreaseData,
       apartJongnoIndecreaseData,
@@ -121,6 +136,9 @@ class ApartTradeDashboard extends PureComponent {
       apartKangnamIndecreaseData,
       apartTargetAreaIncreaseData
     } = this.state;
+
+    console.log(apartMonthlyIncreaseData);
+
     return (
       <div>
         <Helmet>

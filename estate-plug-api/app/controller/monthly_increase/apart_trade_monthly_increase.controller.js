@@ -7,7 +7,7 @@ exports.create = (req, res) => {
       res.status(400).send({ message: "Content can not be empty!" });
       return;
     }
-  
+
     const apartTradeMonthlyIncrease = new ApartTradeMonthlyIncrease({
         year_month: req.body.year_month,
         value: req.body.value,
@@ -64,7 +64,7 @@ exports.update = (req, res) => {
         message: "Data to update can not be empty!"
       });
     }
-  
+
     const id = req.params.id;
 
     ApartTradeMonthlyIncrease.findByIdAndUpdate(id, req.body, { useFindAndModify: false })

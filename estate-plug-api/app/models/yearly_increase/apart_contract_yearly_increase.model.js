@@ -13,6 +13,9 @@ module.exports = mongoose => {
         return object;
     });
 
-    const ApartContractYearlyIncrease = mongoose.model("apart_contract_yearly_increase", schema);
+    const ApartContractYearlyIncrease = mongoose.model(
+      "apart_contract_yearly_increase",
+      schema,
+      "apart_contract_yearly_increase");
     return ApartContractYearlyIncrease;
 };

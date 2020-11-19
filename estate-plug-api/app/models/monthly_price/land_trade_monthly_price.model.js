@@ -13,6 +13,9 @@ module.exports = mongoose => {
         return object;
     });
 
-    const LandTradeMonthlyPrice = mongoose.model("land_trade_monthly_price", schema);
+    const LandTradeMonthlyPrice = mongoose.model(
+      "land_trade_monthly_price",
+      schema,
+      "land_trade_monthly_price");
     return LandTradeMonthlyPrice;
 };
