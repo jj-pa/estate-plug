@@ -1,5 +1,5 @@
 module.exports = app => {
-    const apart_trade_monthly_price = require("../controller/apart_trade_monthly_price.controller.js");
+    const apart_trade_monthly_price = require("../../controller/monthly_price/apart_trade_monthly_price.controller.js");
   
     var router = require("express").Router();
   

@@ -36,8 +36,18 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to estate-plug application." });
 });
 
-// route
-require("./app/routes/apart_trade_monthly_price.routes")(app);
+// route (monthly price)
+require("./app/routes/monthly_price/apart_trade_monthly_price.routes")(app);
+require("./app/routes/monthly_price/apart_contract_monthly_price.routes")(app);
+require("./app/routes/monthly_price/detached_trade_monthly_price.routes.routes")(app);
+require("./app/routes/monthly_price/detached_contract_monthly_price.routes")(app);
+require("./app/routes/monthly_price/land_trade_monthly_price.routes")(app);
+require("./app/routes/monthly_price/multi_housing_trade_monthly_price.routes")(app);
+require("./app/routes/monthly_price/multi_housing_contract_monthly_price.routes")(app);
+require("./app/routes/monthly_price/officetel_trade_monthly_price.routes")(app);
+require("./app/routes/monthly_price/officetel_contract_monthly_price.routes")(app);
+
+// route (etc)
 require("./app/routes/apart_trade_compare_count.routes")(app);
 require("./app/routes/apart_trade_guro_indecrease.routes")(app);
 require("./app/routes/apart_trade_gwanak_indecrease.routes")(app);
