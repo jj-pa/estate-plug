@@ -39,13 +39,35 @@ app.get("/", (req, res) => {
 // route (monthly price)
 require("./app/routes/monthly_price/apart_trade_monthly_price.routes")(app);
 require("./app/routes/monthly_price/apart_contract_monthly_price.routes")(app);
-require("./app/routes/monthly_price/detached_trade_monthly_price.routes.routes")(app);
+require("./app/routes/monthly_price/detached_trade_monthly_price.routes")(app);
 require("./app/routes/monthly_price/detached_contract_monthly_price.routes")(app);
 require("./app/routes/monthly_price/land_trade_monthly_price.routes")(app);
 require("./app/routes/monthly_price/multi_housing_trade_monthly_price.routes")(app);
 require("./app/routes/monthly_price/multi_housing_contract_monthly_price.routes")(app);
 require("./app/routes/monthly_price/officetel_trade_monthly_price.routes")(app);
 require("./app/routes/monthly_price/officetel_contract_monthly_price.routes")(app);
+
+// route (monthly increase)
+require("./app/routes/monthly_increase/apart_trade_monthly_increase.routes")(app);
+require("./app/routes/monthly_increase/apart_contract_monthly_increase.routes")(app);
+require("./app/routes/monthly_increase/detached_trade_monthly_increase.routes")(app);
+require("./app/routes/monthly_increase/detached_contract_monthly_increase.routes")(app);
+require("./app/routes/monthly_increase/land_trade_monthly_increase.routes")(app);
+require("./app/routes/monthly_increase/multi_housing_trade_monthly_increase.routes")(app);
+require("./app/routes/monthly_increase/multi_housing_contract_monthly_increase.routes")(app);
+require("./app/routes/monthly_increase/officetel_trade_monthly_increase.routes")(app);
+require("./app/routes/monthly_increase/officetel_contract_monthly_increase.routes")(app);
+
+// route (yearly increase)
+require("./app/routes/yearly_increase/apart_trade_monthly_increase.routes")(app);
+require("./app/routes/yearly_increase/apart_contract_monthly_increase.routes")(app);
+require("./app/routes/yearly_increase/detached_trade_monthly_increase.routes")(app);
+require("./app/routes/yearly_increase/detached_contract_monthly_increase.routes")(app);
+require("./app/routes/yearly_increase/land_trade_monthly_increase.routes")(app);
+require("./app/routes/yearly_increase/multi_housing_trade_monthly_increase.routes")(app);
+require("./app/routes/yearly_increase/multi_housing_contract_monthly_increase.routes")(app);
+require("./app/routes/yearly_increase/officetel_trade_monthly_increase.routes")(app);
+require("./app/routes/yearly_increase/officetel_contract_monthly_increase.routes")(app);
 
 // route (etc)
 require("./app/routes/apart_trade_compare_count.routes")(app);

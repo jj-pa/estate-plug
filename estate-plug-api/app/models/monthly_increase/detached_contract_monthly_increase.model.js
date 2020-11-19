@@ -13,6 +13,6 @@ module.exports = mongoose => {
         return object;
     });
 
-    const DetachedContractMonthlyIncrease = mongoose.model("detached_trade_monthly_increase", schema);
+    const DetachedContractMonthlyIncrease = mongoose.model("detached_contract_monthly_increase", schema);
     return DetachedContractMonthlyIncrease;
 };

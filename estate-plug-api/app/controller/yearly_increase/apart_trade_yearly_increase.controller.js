@@ -1,20 +1,20 @@
 const db = require("../../models");
-const ApartTradeMonthlyIncrease = db.apart_trade_monthly_increase;
+const ApartTradeYearlyIncrease = db.apart_trade_yearly_increase;
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.year_month) {
+    if (!req.body.year) {
       res.status(400).send({ message: "Content can not be empty!" });
       return;
     }
-  
-    const apartTradeMonthlyIncrease = new ApartTradeMonthlyIncrease({
-        year_month: req.body.year_month,
+
+    const apartTradeYearlyIncrease = new ApartTradeYearlyIncrease({
+        year: req.body.year,
         value: req.body.value,
     });
 
-    apartTradeMonthlyIncrease
-      .save(apartTradeMonthlyIncrease)
+    apartTradeYearlyIncrease
+      .save(apartTradeYearlyIncrease)
       .then(data => {
         res.send(data);
       })
@@ -27,10 +27,10 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    const year_month = req.query.year_month;
-    var condition = year_month ? { year_month: { $regex: new RegExp(year_month), $options: "i" } } : {};
+    const year = req.query.year;
+    var condition = year ? { year: { $regex: new RegExp(year), $options: "i" } } : {};
 
-    ApartTradeMonthlyIncrease.find(condition)
+    ApartTradeYearlyIncrease.find(condition)
       .then(data => {
         res.send(data);
       })
@@ -45,7 +45,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
 const id = req.params.id;
 
-    ApartTradeMonthlyIncrease.findById(id)
+    ApartTradeYearlyIncrease.findById(id)
     .then(data => {
     if (!data)
         res.status(404).send({ message: "Not found Tutorial with id " + id });
@@ -64,10 +64,10 @@ exports.update = (req, res) => {
         message: "Data to update can not be empty!"
       });
     }
-  
+
     const id = req.params.id;
 
-    ApartTradeMonthlyIncrease.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    ApartTradeYearlyIncrease.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
       .then(data => {
         if (!data) {
           res.status(404).send({
@@ -85,7 +85,7 @@ exports.update = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
 
-      ApartTradeMonthlyIncrease.findByIdAndRemove(id)
+      ApartTradeYearlyIncrease.findByIdAndRemove(id)
       .then(data => {
         if (!data) {
           res.status(404).send({
@@ -105,7 +105,7 @@ exports.update = (req, res) => {
   };
 
   exports.deleteAll = (req, res) => {
-      ApartTradeMonthlyIncrease.deleteMany({})
+      ApartTradeYearlyIncrease.deleteMany({})
       .then(data => {
         res.send({
           message: `${data.deletedCount} Tutorials were deleted successfully!`
@@ -120,7 +120,7 @@ exports.update = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-      ApartTradeMonthlyIncrease.find({ published: true })
+      ApartTradeYearlyIncrease.find({ published: true })
       .then(data => {
         res.send(data);
       })

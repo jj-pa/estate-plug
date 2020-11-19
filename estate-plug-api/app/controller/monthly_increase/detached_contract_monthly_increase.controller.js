@@ -10,7 +10,7 @@ exports.create = (req, res) => {
 
     const detachedContractMonthlyIncrease = new DetachedContractMonthlyIncrease({
         year_month: req.body.year_month,
-        price: req.body.price,
+        value: req.body.value,
     });
 
     detachedContractMonthlyIncrease

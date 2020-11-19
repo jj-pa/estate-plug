@@ -1,20 +1,20 @@
 const db = require("../../models");
-const OfficetelContractMonthlyIncrease = db.officetel_contract_monthly_increase;
+const OfficetelContractYearlyIncrease = db.officetel_contract_yearly_increase;
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.year_month) {
+    if (!req.body.year) {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
 
-    const officetelContractMonthlyIncrease = new OfficetelContractMonthlyIncrease({
-        year_month: req.body.year_month,
+    const officetelContractYearlyIncrease = new OfficetelContractYearlyIncrease({
+        year: req.body.year,
         value: req.body.value,
     });
 
-    officetelContractMonthlyIncrease
-        .save(officetelContractMonthlyIncrease)
+    officetelContractYearlyIncrease
+        .save(officetelContractYearlyIncrease)
         .then(data => {
             res.send(data);
         })
@@ -27,10 +27,10 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    const year_month = req.query.year_month;
-    var condition = year_month ? { year_month: { $regex: new RegExp(year_month), $options: "i" } } : {};
+    const year = req.query.year;
+    var condition = year ? { year: { $regex: new RegExp(year), $options: "i" } } : {};
 
-    OfficetelContractMonthlyIncrease.find(condition)
+    OfficetelContractYearlyIncrease.find(condition)
         .then(data => {
             res.send(data);
         })
@@ -45,7 +45,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    OfficetelContractMonthlyIncrease.findById(id)
+    OfficetelContractYearlyIncrease.findById(id)
         .then(data => {
             if (!data)
                 res.status(404).send({ message: "Not found Tutorial with id " + id });
@@ -67,7 +67,7 @@ exports.update = (req, res) => {
 
     const id = req.params.id;
 
-    OfficetelContractMonthlyIncrease.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    OfficetelContractYearlyIncrease.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
         .then(data => {
             if (!data) {
                 res.status(404).send({
@@ -85,7 +85,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    OfficetelContractMonthlyIncrease.findByIdAndRemove(id)
+    OfficetelContractYearlyIncrease.findByIdAndRemove(id)
         .then(data => {
             if (!data) {
                 res.status(404).send({
@@ -105,7 +105,7 @@ exports.delete = (req, res) => {
 };
 
 exports.deleteAll = (req, res) => {
-    OfficetelContractMonthlyIncrease.deleteMany({})
+    OfficetelContractYearlyIncrease.deleteMany({})
         .then(data => {
             res.send({
                 message: `${data.deletedCount} Tutorials were deleted successfully!`
@@ -120,7 +120,7 @@ exports.deleteAll = (req, res) => {
 };
 
 exports.findAllPublished = (req, res) => {
-    OfficetelContractMonthlyIncrease.find({ published: true })
+    OfficetelContractYearlyIncrease.find({ published: true })
         .then(data => {
             res.send(data);
         })

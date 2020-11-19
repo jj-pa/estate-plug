@@ -1,20 +1,20 @@
 const db = require("../../models");
-const DetachedTradeMonthlyIncrease = db.detached_trade_monthly_increase;
+const DetachedTradeYearlyIncrease = db.detached_trade_yearly_increase;
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.year_month) {
+    if (!req.body.year) {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
 
-    const detachedTradeMonthlyIncrease = new DetachedTradeMonthlyIncrease({
-        year_month: req.body.year_month,
+    const detachedTradeYearlyIncrease = new DetachedTradeYearlyIncrease({
+        year: req.body.year,
         value: req.body.value,
     });
 
-    detachedTradeMonthlyIncrease
-        .save(detachedTradeMonthlyIncrease)
+    detachedTradeYearlyIncrease
+        .save(detachedTradeYearlyIncrease)
         .then(data => {
             res.send(data);
         })
@@ -27,10 +27,10 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    const year_month = req.query.year_month;
-    var condition = year_month ? { year_month: { $regex: new RegExp(year_month), $options: "i" } } : {};
+    const year = req.query.year;
+    var condition = year ? { year: { $regex: new RegExp(year), $options: "i" } } : {};
 
-    DetachedTradeMonthlyIncrease.find(condition)
+    DetachedTradeYearlyIncrease.find(condition)
         .then(data => {
             res.send(data);
         })
@@ -45,7 +45,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    DetachedTradeMonthlyIncrease.findById(id)
+    DetachedTradeYearlyIncrease.findById(id)
         .then(data => {
             if (!data)
                 res.status(404).send({ message: "Not found Tutorial with id " + id });
@@ -67,7 +67,7 @@ exports.update = (req, res) => {
 
     const id = req.params.id;
 
-    DetachedTradeMonthlyIncrease.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    DetachedTradeYearlyIncrease.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
         .then(data => {
             if (!data) {
                 res.status(404).send({
@@ -85,7 +85,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    DetachedTradeMonthlyIncrease.findByIdAndRemove(id)
+    DetachedTradeYearlyIncrease.findByIdAndRemove(id)
         .then(data => {
             if (!data) {
                 res.status(404).send({
@@ -105,7 +105,7 @@ exports.delete = (req, res) => {
 };
 
 exports.deleteAll = (req, res) => {
-    DetachedTradeMonthlyIncrease.deleteMany({})
+    DetachedTradeYearlyIncrease.deleteMany({})
         .then(data => {
             res.send({
                 message: `${data.deletedCount} Tutorials were deleted successfully!`
@@ -120,7 +120,7 @@ exports.deleteAll = (req, res) => {
 };
 
 exports.findAllPublished = (req, res) => {
-    DetachedTradeMonthlyIncrease.find({ published: true })
+    DetachedTradeYearlyIncrease.find({ published: true })
         .then(data => {
             res.send(data);
         })
