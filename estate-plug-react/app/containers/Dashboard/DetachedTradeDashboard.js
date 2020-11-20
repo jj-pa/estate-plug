@@ -9,7 +9,8 @@ import Divider from '@material-ui/core/Divider';
 import {
   MultiLineChart,
   SingleLineChart,
-  VerticalBarChart
+  VerticalBarChart,
+  PieChart
 } from 'enl-components';
 import styles from './dashboard-jss';
 import axios from 'axios';
@@ -20,6 +21,7 @@ class DetachedTradeDashboard extends PureComponent {
     detachedMonthlyIncreaseData: [],
     detachedMonthlyPriceData: [],
     detachedYearlyIncreaseData: [],
+    detachedYearlyPercentageData: [],
   }
 
   componentDidMount() {
@@ -27,10 +29,12 @@ class DetachedTradeDashboard extends PureComponent {
       getDetachedMonthlyIncreaseData,
       getDetachedMonthlyPriceData,
       getDetachedYearlyIncreaseData,
+      getDetachedYearlyPercentageData,
     } = this;
     getDetachedMonthlyIncreaseData();
     getDetachedMonthlyPriceData();
     getDetachedYearlyIncreaseData();
+    getDetachedYearlyPercentageData();
   }
   getDetachedMonthlyIncreaseData = async () => {
     try {
@@ -65,6 +69,17 @@ class DetachedTradeDashboard extends PureComponent {
     }
   };
 
+  getDetachedYearlyPercentageData = async () => {
+    try {
+      const response = await axios.get('http://localhost:4500/api/detached_trade_yearly_percentage');
+      this.setState({ // boards: 'test'
+        detachedYearlyPercentageData: response.data
+      });
+    } catch (e) {
+      console.log('detached_trade_yearly_percentage', e);
+    }
+  }
+
   render() {
     const title = brand.name + ' - Personal Dashboard';
     const description = brand.desc;
@@ -73,6 +88,7 @@ class DetachedTradeDashboard extends PureComponent {
       detachedMonthlyIncreaseData,
       detachedMonthlyPriceData,
       detachedYearlyIncreaseData,
+      detachedYearlyPercentageData,
     } = this.state;
 
     const monthlyIncreaseData2015 = [];
@@ -116,6 +132,27 @@ class DetachedTradeDashboard extends PureComponent {
     detachedMonthlyPriceData.map(monthlyData => (monthlyData.year_month.substr(0, 4) === '2019'
       ? monthlyPriceData2019.push(monthlyData)
       : null));
+
+    const monthlyPercentageData2015 = [];
+    const monthlyPercentageData2016 = [];
+    const monthlyPercentageData2017 = [];
+    const monthlyPercentageData2018 = [];
+    const monthlyPercentageData2019 = [];
+    detachedYearlyPercentageData.map(monthlyData => (monthlyData.year === '2015'
+      ? monthlyPercentageData2015.push(monthlyData)
+      : null));
+    detachedYearlyPercentageData.map(monthlyData => (monthlyData.year === '2016'
+      ? monthlyPercentageData2016.push(monthlyData)
+      : null));
+    detachedYearlyPercentageData.map(monthlyData => (monthlyData.year === '2017'
+      ? monthlyPercentageData2017.push(monthlyData)
+      : null));
+    detachedYearlyPercentageData.map(monthlyData => (monthlyData.year === '2018'
+      ? monthlyPercentageData2018.push(monthlyData)
+      : null));
+    detachedYearlyPercentageData.map(monthlyData => (monthlyData.year === '2019'
+      ? monthlyPercentageData2019.push(monthlyData)
+      : null));
     return (
       <div>
         <Helmet>
@@ -129,6 +166,51 @@ class DetachedTradeDashboard extends PureComponent {
 
         <Divider className={classes.divider} />
         <Grid container spacing={3} className={classes.root}>
+          <Grid item xl={3} lg={4} md={6} xs={12}>
+            <PieChart
+              name="yearlyPercentageData2015"
+              data={monthlyPercentageData2015}
+              height={300}
+              title="2015년 단독주택 매매"
+              desc="2015년 단독주택 매매 거래 비중"
+            />
+          </Grid>
+          <Grid item xl={3} lg={4} md={6} xs={12}>
+            <PieChart
+              name="yearlyPercentageData2016"
+              data={monthlyPercentageData2016}
+              height={300}
+              title="2016년 단독주택 매매"
+              desc="2016년 단독주택 매매 거래 비중"
+            />
+          </Grid>
+          <Grid item xl={3} lg={4} md={6} xs={12}>
+            <PieChart
+              name="yearlyPercentageData2017"
+              data={monthlyPercentageData2017}
+              height={300}
+              title="2017년 단독주택 매매"
+              desc="2017년 단독주택 매매 거래 비중"
+            />
+          </Grid>
+          <Grid item xl={3} lg={4} md={6} xs={12}>
+            <PieChart
+              name="yearlyPercentageData2018"
+              data={monthlyPercentageData2018}
+              height={300}
+              title="2018년 단독주택 매매"
+              desc="2018년 단독주택 매매 거래 비중"
+            />
+          </Grid>
+          <Grid item xl={3} lg={4} md={6} xs={12}>
+            <PieChart
+              name="yearlyPercentageData2019"
+              data={monthlyPercentageData2019}
+              height={300}
+              title="2019년 단독주택 매매"
+              desc="2019년 단독주택 매매 거래 비중"
+            />
+          </Grid>
           <Grid item xl={3} lg={4} md={6} xs={12}>
             <SingleLineChart
               name="yearlyIncreaseData"

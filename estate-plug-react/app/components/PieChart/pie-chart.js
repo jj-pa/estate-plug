@@ -58,21 +58,21 @@ const draw = (props) => {
             .outerRadius(radius); // size of overall chart
 
         let pie = d3.pie() // start and end angles of the segments
-            .value(function(d) { return d.count; }) // how to extract the numerical data from each entry in our dataset
+            .value(function(d) { return d.percent; }) // how to extract the numerical data from each entry in our dataset
             .sort(null); // by default, data sorts in oescending value. this will mess with our animation so we set it to null
 
         // define tooltip
         let tooltip = d3.select('.' + name) // select element in the DOM with id 'chart'
-            .append('div') // append a div element to the element we've selected                                    
+            .append('div') // append a div element to the element we've selected
             .attr('class', 'tooltip'); // add class 'tooltip' on the divs we just selected
 
-        tooltip.append('div') // add divs to the tooltip defined above                            
-            .attr('class', 'label'); // add class 'label' on the selection                         
+        tooltip.append('div') // add divs to the tooltip defined above
+            .attr('class', 'area_cd'); // add class 'label' on the selection
 
-        tooltip.append('div') // add divs to the tooltip defined above                     
-            .attr('class', 'count'); // add class 'count' on the selection                  
+        tooltip.append('div') // add divs to the tooltip defined above
+            .attr('class', 'percent'); // add class 'count' on the selection
 
-        tooltip.append('div') // add divs to the tooltip defined above  
+        tooltip.append('div') // add divs to the tooltip defined above
             .attr('class', 'percent'); // add class 'percent' on the selection
 
         // Confused? see below:
@@ -89,7 +89,7 @@ const draw = (props) => {
         // </div>
 
         dataset.forEach(function(d) {
-            d.count = +d.count; // calculate count as we iterate through the data
+            d.percent = +d.percent; // calculate count as we iterate through the data
             d.enabled = true; // add enabled property to track which entries are checked
         });
 
@@ -99,35 +99,35 @@ const draw = (props) => {
             .enter() //creates placeholder nodes for each of the values
             .append('path') // replace placeholders with path elements
             .attr('d', arc) // define d attribute with arc function above
-            .attr('fill', function(d) { return color(d.data.label); }) // use color scale to define fill of each label in dataset
+            .attr('fill', function(d) { return color(d.data.area_cd); }) // use color scale to define fill of each label in dataset
             .each(function(d) { this._current - d; }); // creates a smooth animation for each track
 
         // mouse event handlers are attached to path so they need to come after its definition
-        path.on('mouseover', function(event, d) {  // when mouse enters div     
+        path.on('mouseover', function(event, d) {  // when mouse enters div
             d3.select(this).transition()
                .duration('50')
                .attr('opacity', '.85');
-                let total = d3.sum(dataset.map(function(d) { // calculate the total number of tickets in the dataset         
-                return (d.enabled) ? d.count : 0; // checking to see if the entry is enabled. if it isn't, we return 0 and cause other percentages to increase                                      
-            }));                                 
+                let total = d3.sum(dataset.map(function(d) { // calculate the total number of tickets in the dataset
+                return (d.enabled) ? d.percent : 0; // checking to see if the entry is enabled. if it isn't, we return 0 and cause other percentages to increase
+            }));
 
             console.log(d);
-            let percent = Math.round(1000 * d.data.count / total) / 10; // calculate percent
-            tooltip.select('.label').html(d.data.label); // set current label           
-            tooltip.select('.count').html('₩' + d.data.count); // set current count            
-            tooltip.select('.percent').html(percent + '%'); // set percent calculated above          
-            tooltip.style('display', 'block'); // set display                     
-            tooltip.style('position', 'absolute');                     
-        });                                                     
+            let percent = Math.round(1000 * d.data.percent / total) / 10; // calculate percent
+            tooltip.select('.area_cd').html(d.data.area_cd); // set current label
+            tooltip.select('.percent').html(d.data.percent); // set current count
+            tooltip.select('.percent').html(percent + '%'); // set percent calculated above
+            tooltip.style('display', 'block'); // set display
+            tooltip.style('position', 'absolute');
+        });
 
-        path.on('mouseout', function() { // when mouse leaves div                        
+        path.on('mouseout', function() { // when mouse leaves div
             tooltip.style('display', 'none'); // hide tooltip for that element
             d3.select(this).transition()
                  .duration('50')
                  .attr('opacity', '1');
         });
 
-        path.on('mousemove', function(event) { // when mouse moves                  
+        path.on('mousemove', function(event) { // when mouse moves
             tooltip.style('top', (event.layerY + 10) + 'px') // always 10px below the cursor
                 .style('left', (event.layerX + 10) + 'px'); // always 10px to the right of the mouse
         });
@@ -138,21 +138,21 @@ const draw = (props) => {
             .enter() // creates placeholder
             .append('g') // replace placeholders with g elements
             .attr('class', 'legend') // each g is given a legend class
-            .attr('transform', function(d, i) {                   
-                let height = legendRectSize + legendSpacing; // height of element is the height of the colored square plus the spacing      
-                let offset =  height * color.domain().length / 2; // vertical offset of the entire legend = height of a single element & half the total number of elements  
+            .attr('transform', function(d, i) {
+                let height = legendRectSize + legendSpacing; // height of element is the height of the colored square plus the spacing
+                let offset =  height * color.domain().length / 2; // vertical offset of the entire legend = height of a single element & half the total number of elements
                 let horz = 26 * legendRectSize; // the legend is shifted to the left to make room for the text
-                let vert = i * height - offset; // the top of the element is hifted up or down from the center using the offset defiend earlier and the index of the current element 'i'               
-                return 'translate(' + horz + ',' + vert + ')'; //return translation       
+                let vert = i * height - offset; // the top of the element is hifted up or down from the center using the offset defiend earlier and the index of the current element 'i'
+                return 'translate(' + horz + ',' + vert + ')'; //return translation
             });
 
         // adding colored squares to legend
-        legend.append('rect') // append rectangle squares to legend                                   
-            .attr('width', legendRectSize) // width of rect size is defined above                        
-            .attr('height', legendRectSize) // height of rect size is defined above                      
+        legend.append('rect') // append rectangle squares to legend
+            .attr('width', legendRectSize) // width of rect size is defined above
+            .attr('height', legendRectSize) // height of rect size is defined above
             .style('fill', color) // each fill is passed a color
             .style('stroke', color) // each stroke is passed a color
-            .on('click', function(label) {
+            .on('click', function(area_cd) {
                 let rect = d3.select(this); // this refers to the colored squared just clicked
                 let enabled = true; // set enabled true to default
                 let totalEnabled = d3.sum(dataset.map(function(d) { // can't disable all options
@@ -167,15 +167,15 @@ const draw = (props) => {
                     enabled = false; // set enabled to false
                 }
 
-                pie.value(function(d) { 
-                    if (d.label === label) d.enabled = enabled; // if entry label matches legend label
-                        return (d.enabled) ? d.count : 0; // update enabled property and return count or 0 based on the entry's status
+                pie.value(function(d) {
+                    if (d.area_cd === area_cd) d.enabled = enabled; // if entry label matches legend label
+                        return (d.enabled) ? d.percent : 0; // update enabled property and return count or 0 based on the entry's status
                 });
 
                 path = path.data(pie(dataset)); // update pie with new data
 
                 path.transition() // transition of redrawn pie
-                    .duration(750) // 
+                    .duration(750) //
                     .attrTween('d', function(d) { // 'd' specifies the d attribute that we'll be animating
                         let interpolate = d3.interpolate(this._current, d); // this = current path element
                         this._current = interpolate(0); // interpolate between current value and the new value of 'd'
@@ -186,7 +186,7 @@ const draw = (props) => {
             });
 
         // adding text to legend
-        legend.append('text')                                    
+        legend.append('text')
             .attr('x', legendRectSize + legendSpacing)
             // .attr('y', legendRectSize - legendSpacing)
             .attr('y', legendRectSize)
